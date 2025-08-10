@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TaskForge Icon Generator</title>
+</head>
+<body>
+    <h1>TaskForge Icon Generator</h1>
+    <p>Right-click each canvas below and "Save image as" to create the icon files:</p>
+    
+    <h2>16x16 Icon</h2>
+    <canvas id="icon16" width="16" height="16"></canvas>
+    
+    <h2>48x48 Icon</h2>
+    <canvas id="icon48" width="48" height="48"></canvas>
+    
+    <h2>128x128 Icon</h2>
+    <canvas id="icon128" width="128" height="128"></canvas>
+
+    <script>
+        function drawIcon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Background
+            ctx.fillStyle = '#1C1C1C';
+            ctx.fillRect(0, 0, size, size);
+            
+            // Accent color
+            ctx.fillStyle = '#3A9DF8';
+            
+            // Draw a simple "TF" design
+            const padding = size * 0.2;
+            const centerX = size / 2;
+            const centerY = size / 2;
+            
+            // Draw a circle with "TF" inside
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, size * 0.35, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Draw "TF" text
+            ctx.fillStyle = '#1C1C1C';
+            ctx.font = `bold ${size * 0.3}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('TF', centerX, centerY);
+        }
+        
+        // Generate all icons
+        drawIcon('icon16', 16);
+        drawIcon('icon48', 48);
+        drawIcon('icon128', 128);
+    </script>
+</body>
+</html>

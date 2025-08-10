@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TaskForge</title>
+  <link rel="stylesheet" href="popup.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div class="brand">
+        <span class="dot"></span>
+        <h1>TaskForge</h1>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <label>Credits</label>
+          <span id="credits">0</span>
+        </div>
+        <div class="stat">
+          <label>To Free</label>
+          <span id="toFree">100</span>
+        </div>
+        <div class="stat">
+          <label>Streak</label>
+          <span id="streak">0d</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="timer" id="timerSection">
+      <div class="time" id="time">25:00</div>
+      <div class="controls">
+        <button id="start" class="primary">Start</button>
+        <button id="pause" class="ghost">Pause</button>
+        <button id="resume" class="ghost">Resume</button>
+        <button id="stop" class="ghost">Stop</button>
+      </div>
+      <div class="task-now">
+        <select id="taskSelect" placeholder="Select a task...">
+          <option value="">Choose a task...</option>
+        </select>
+        <button id="startForTask" class="accent">Start for Task</button>
+      </div>
+      <div class="session-info" id="sessionInfo" style="display: none;">
+        <div class="current-task">
+          <span class="task-label">Current Task:</span>
+          <span class="task-name" id="currentTaskName">-</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="add-task">
+      <h2>Add New Task</h2>
+      <input id="tTitle" placeholder="What needs to be done?" />
+      <div class="row">
+        <div>
+          <label>Importance</label>
+          <select id="tImportance">
+            <option value="1">1★ Low Priority</option>
+            <option value="2">2★ Normal</option>
+            <option value="3" selected>3★ Important</option>
+            <option value="4">4★ High Priority</option>
+            <option value="5">5★ Critical</option>
+          </select>
+        </div>
+        <div>
+          <label>Effort (min)</label>
+          <input id="tEffort" type="number" min="5" max="120" step="5" value="25" />
+        </div>
+      </div>
+      <button id="addTask" class="accent">
+        <span class="btn-text">Add Task</span>
+        <span class="btn-icon">+</span>
+      </button>
+    </section>
+
+    <section class="tasks">
+      <h2>Your Tasks</h2>
+      <div class="task-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="high">High Priority</button>
+        <button class="filter-btn" data-filter="recent">Recent</button>
+      </div>
+      <ul id="taskList"></ul>
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-icon">📝</div>
+        <p>No tasks yet. Add your first task to get started!</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-left">
+        <span class="version">v0.1.0</span>
+      </div>
+      <div class="footer-right">
+        <a href="#" id="openOptions">Settings</a>
+        <a href="#" id="openStats">Stats</a>
+      </div>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
